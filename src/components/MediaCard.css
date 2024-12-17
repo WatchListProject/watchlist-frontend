@@ -1,0 +1,180 @@
+/* Estilo para la tarjeta de medios */
+.mediaCard {
+  display: flex;
+  gap: 1rem;
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/* Estilos de la parte derecha de la tarjeta */
+.mediacard-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+}
+
+/* Estilos para los botones */
+.options {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mediaCard button {
+  margin: 0 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.mediaCard button.addButton {
+  background-color: #4caf50;
+  color: white;
+}
+
+.mediaCard button.addButton:hover {
+  background-color: #45a049;
+}
+
+.mediaCard button.removeButton {
+  background-color: #f44336;
+  color: white;
+}
+
+.mediaCard button.removeButton:hover {
+  background-color: #e53935;
+}
+
+/* Estilo para la imagen de la tarjeta */
+.mediaCard img {
+  height: 375px;
+  width: 250px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Estilos para el título (h3) */
+.mediaCard h3 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: #f0db4f;
+  text-align: left;
+}
+
+/* Primer párrafo en la tarjeta (Fecha) */
+.mediaCard p:first-of-type {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: #a9a9a9;
+  text-align: left;
+}
+
+/* Último párrafo (Descripción) */
+.mediaCard p:last-of-type {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+  color: #dcdcdc;
+  text-align: justify;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 1rem;
+}
+
+/* Contenedor de los botones y el selector */
+.mediaButtons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seenSelector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Selector de estado "Seen" */
+.seenSelector select {
+  padding: 10px 10px; /* Igual al botón remove */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #2a2a2a;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+  width: auto; /* Ajusta al contenido */
+}
+
+.seenSelector select:hover {
+  background-color: #3a3a3a;
+}
+
+.seenSelector select:focus {
+  outline: none;
+  border-color: #f0db4f;
+}
+
+/* Estilos responsivos para la tarjeta de medios */
+@media (max-width: 768px) {
+  .mediaCard {
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem auto; /* Reduce el margen en pantallas pequeñas */
+    width: 95%;
+  }
+
+  .mediaCard img {
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+  }
+
+  .mediaCard div {
+    margin-top: 1rem; /* Reduce el margen superior */
+    text-align: center;
+  }
+
+  .mediaButtons {
+    flex-direction: column; /* Botones y selector en columna */
+    gap: 10px; /* Espacio reducido entre ellos */
+    width: 100%; /* Asegura que ocupen todo el ancho disponible */
+  }
+
+  .seenSelector select {
+    width: 100%; /* Ocupa todo el ancho en móvil */
+    font-size: 1rem;
+    margin-bottom: 0px; /* Margen inferior ajustado */
+  }
+}
+
+.mediaIcon {
+  color: #555;
+  width: 25px;
+  margin-right: 0.3rem;
+  height: auto;
+  vertical-align: middle; /* Alinea el icono verticalmente */
+  position: relative; /* Habilita ajustes relativos */
+  bottom: 2px; /* Ajusta la posición vertical del icono */
+}
+
+
+
+

@@ -1,0 +1,136 @@
+/* General Navbar Styles */
+.navbar {
+    background-color: #1e1e1e;
+    color: #f0db4f;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1000;
+    max-height: 80px; /* Altura máxima fija */
+    display: flex; /* Activa flexbox */
+    align-items: center; /* Centra el contenido verticalmente */
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between; /* El título a la izquierda, enlaces a la derecha */
+    align-items: center;
+    width: 100%; /* Asegura que use el espacio completo de la navbar */
+  }
+  
+  .navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f0db4f;
+    text-decoration: none;
+    margin-right: auto; /* Empuja los enlaces hacia la derecha */
+  }
+  
+  .navbar-brand:hover {
+    color: #e8ba00;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    font-weight: bold;
+    gap: 2rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-links li {
+    text-align: center;
+  }
+  
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #f0db4f;
+  }
+  
+  /* Responsive Menu Toggle Button */
+/* Botón de menú responsivo */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none; /* Elimina cualquier color de fondo heredado */
+    border: none; /* Elimina bordes */
+    color: #f0db4f; /* Asegura el color amarillo que queremos */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    padding: 0.5rem; /* Añade un poco de espacio interno para un área de clic más grande */
+    border-radius: 4px; /* Opcional: añade bordes redondeados */
+    transition: background 0.3s ease, color 0.3s ease; /* Suaviza la interacción */
+  }
+  
+  .menu-toggle:hover {
+    background-color: rgba(240, 219, 79, 0.2); /* Fondo amarillo semi-transparente al pasar el mouse */
+    color: #e8ba00; /* Cambia el color del icono al pasar */
+  }
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #1e1e1e;
+      padding: 1rem 0;
+      border-radius: 0 0 8px 8px;
+      transform: translateY(-200%);
+      visibility: hidden;
+      opacity: 0;
+    }
+  
+    .nav-links.open {
+      transform: translateY(0%);
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    nav .menu-toggle {
+        all: unset; /* Resetea todos los estilos heredados */
+        display: block;
+        font-size: 1.5rem;
+        color: #f0db4f;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+      }
+      
+      nav .menu-toggle:hover {
+        background-color: rgba(240, 219, 79, 0.2);
+        color: #e8ba00;
+      }
+      
+  }
+
+  .nav-links .login-button {
+    color: #1e1e1e; /* Texto oscuro */
+    background-color: #f0db4f; /* Fondo amarillo */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-links .login-button:hover {
+    background-color: #e8ba00; /* Amarillo más oscuro */
+    color: #000000 !important; /* Texto negro al pasar el mouse */
+  }
+  
+
+  

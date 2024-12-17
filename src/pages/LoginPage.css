@@ -1,0 +1,29 @@
+/* Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column; /* Coloca el label sobre el input */
+  margin-bottom: 1.5rem; /* Espacio entre grupos */
+}
+
+/* Label styling */
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* Espacio entre el label y el input */
+  color: #ccc;
+}
+
+/* Input styling */
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}

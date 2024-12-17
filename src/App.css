@@ -1,0 +1,92 @@
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #121212;
+  color: rgba(255, 255, 255, 0.87);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centrar solo el contenido del main */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+main h1 {
+  font-size: 2.5rem;
+  color: #f0db4f;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Formularios */
+.form {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+input, select, button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+}
+
+input:hover, select:hover {
+  border: 1px solid #007bff;
+  background: #333;
+}
+
+/* Botón */
+button {
+  cursor: pointer;
+  background: #f0db4f;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #e8ba00;
+}
+
+/* Mensajes */
+.loading {
+  color: #007bff;
+  font-style: italic;
+}
+
+.error {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  input, select, button {
+    width: 90%;
+    margin-bottom: 1rem;
+  }
+}
