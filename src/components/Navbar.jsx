@@ -35,7 +35,9 @@ const Navbar = () => {
                     <li>
                         <Link to="/my-list" onClick={toggleMenu}>My List</Link>
                     </li>
-
+                    <li>
+                        <Link to="/AI-Recomendations" onClick={toggleMenu}>AI Recomendations</Link>
+                    </li>
                     <li>
                         <Link to="/about" onClick={toggleMenu}>About</Link>
                     </li>
@@ -44,16 +46,14 @@ const Navbar = () => {
                     </li>
                     {isLoggedIn ?
                         <li>
-                            <button to="/login" className="login-button" onClick={handleLogout}>Logout</button>
+                            <Link to="/" className="login-button" onClick={handleLogout}>Logout</Link>
                         </li> :
                         <li>
-                            <Link to="/login" className="login-button" onClick={toggleMenu}>Login</Link>
+                            <Link to="/" className="login-button" onClick={handleLoginWithGoogle}>Sign in with Google</Link>
                         </li>
 
                     }
-                    <li>
-                        <Link to="/login" className="login-button" onClick={handleLoginWithGoogle}>Sign in with Google</Link>
-                    </li>
+
                 </ul>
             </div>
         </nav>

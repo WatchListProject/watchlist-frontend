@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import useLogin from './hooks/useLogin';
 import { useEffect } from 'react';
 import MyList from './pages/MyListPage';
+import RecommendationsPage from './pages/RecommendationPage';
 
 function App() {
     const { checkIsLoggedIn } = useLogin();
@@ -30,6 +31,7 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/search" element={<SearchPage />} />
                         <Route path="/login" element={<LoginPage />} />
+                        <Route path="AI-Recomendations" element={<RecommendationsPage/>} />
                     </Routes>
                 </main>
             </Router>
