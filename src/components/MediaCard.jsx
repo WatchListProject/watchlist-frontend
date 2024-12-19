@@ -10,7 +10,7 @@ const MediaCard = ({
 }) => {
   // Estado y acciones de contexto
   const { addMedia, removeMedia, updateSeenStatus } = useMediaList();
-  
+
   // Lógica de añadir medio a la lista
   const handleAddToList = () => {
     console.log('handleAddToList');
@@ -112,10 +112,16 @@ const MediaCard = ({
       <img src={media.posterPath} alt={media.title} />
       <div className="mediacard-right">
         <div>{renderMediaContent()}</div>
-        <div className="options">{renderButtons()}</div>
+        <div className="options">
+          {renderButtons()}
+        </div>
+        {media.addedAt && <div className="addedAt">
+          Added At: {media.addedAt}
+        </div>}
       </div>
     </div>
   );
+
 };
 
 // PropTypes para validación
@@ -132,6 +138,7 @@ MediaCard.propTypes = {
     overview: PropTypes.string,
     onList: PropTypes.bool,
     seen: PropTypes.bool,
+    addedAt: PropTypes.string,
   }).isRequired,
 };
 

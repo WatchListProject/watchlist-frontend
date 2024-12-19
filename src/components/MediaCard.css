@@ -132,6 +132,12 @@
   border-color: #f0db4f;
 }
 
+.addedAt {
+  font-size: 0.95rem; /* Tamaño de fuente más pequeño */
+  color: #777; /* Color gris para diferenciarlo */
+  text-align: left; /* Alineación del texto */
+}
+
 /* Estilos responsivos para la tarjeta de medios */
 @media (max-width: 768px) {
   .mediaCard {
