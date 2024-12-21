@@ -1,0 +1,271 @@
+.search-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos cuando no hay búsqueda */
+    justify-content: center; /* Centra todo verticalmente */
+    min-height: calc(100vh - 350px); /* Ajusta la altura restando la altura de la navbar */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  
+  
+  /* Estilos cuando el usuario ya ha buscado algo */
+  .search-page-with-results {
+    display: block; /* Mantiene la estructura existente con los resultados */
+    align-items: flex-start; /* Alinea los elementos al principio cuando hay resultados */
+  }
+  
+  
+  
+  /* Estilo para el formulario y elementos */
+  .search-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  /* Estilos generales */
+h1 {
+    font-size: 24px; /* Tamaño por defecto */
+    margin-bottom: 10px; /* Margen inferior por defecto */
+    transition: all 0.3s ease; /* Transición suave para los cambios */
+  }
+  
+  /* Cuando no haya resultados, hacer el h1 más grande */
+  .search-page-container:not(.search-page-with-results) h1 {
+    font-size: 46px; /* Aumentar el tamaño cuando no se ha buscado */
+    margin-bottom: 0px; /* Reducir el margen con el formulario */
+  }
+  
+  
+
+
+
+/* Estilos para el formulario */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Eliminar márgenes de los elementos dentro del formulario */
+.search-form input,
+.search-form select,
+.search-form button {
+    margin: 0; /* Elimina márgenes */
+    box-sizing: border-box; /* Para que el padding no afecte el tamaño */
+    height: 40px; /* Ajusta la altura para todos los elementos */
+    padding: 0 10px; /* Ajusta el padding para el contenido */
+    border-radius: 8px; /* Redondeo de las esquinas */
+    border: 1px solid #ccc; /* Borde gris sutil */
+}
+
+/* Estilos para el input */
+.search-form input {
+    flex: 8; /* Ancho mayor */
+    font-size: 14px;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+}
+
+/* Estilos para el select */
+.search-form select {
+    flex: 1;
+    font-size: 14px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #ccc; /* Borde gris sutil */
+    outline: none;
+}
+
+/* Estilos para el botón */
+.search-form button {
+    flex: 1;
+    padding: 0 20px; /* Mantiene el padding dentro del botón */
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    background-color: #f0db4f;
+    border: 1px solid #000000; /* Borde gris sutil */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #e9e9e9;
+    color: #222;
+}
+
+.search-form button:active {
+    background-color: #e5c84f;
+}
+
+.search-form-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-form select,
+  .search-form button {
+    width: 100%;
+  }
+
+  .search-form-row {
+    flex-direction: column;
+  }
+}
+
+
+
+
+/* Existing styles */
+.search-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .search-form input,
+  .search-form select,
+  .search-form button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .search-form {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .search-form input,
+    .search-form select,
+    .search-form button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .search-form button {
+      margin-bottom: 0;
+    }
+  }
+
+
+  .search-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.search-form input,
+.search-form select,
+.search-form button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-form select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-form-row {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .search-form input {
+    flex: 1;
+  }
+
+  .search-form button {
+    flex-shrink: 0;
+  }
+}
+
+
+.search-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.search-form input,
+.search-form select,
+.search-form button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-form select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-form-row {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .search-form input {
+    flex: 1;
+  }
+
+  .search-form button {
+    flex-shrink: 0;
+  }
+}
+
+
+

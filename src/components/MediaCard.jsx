@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import './MediaCard.css';
 import useMediaList from '../hooks/useMediaList';
+import { FaFilm, FaTv } from 'react-icons/fa'; // Ejemplo usando react-icons
 
 const MediaCard = ({
   media = {
@@ -8,21 +9,9 @@ const MediaCard = ({
     overview: 'Description not available',
   },
 }) => {
-  // Estado y acciones de contexto
   const { addMedia, removeMedia, updateSeenStatus } = useMediaList();
 
-  // Lógica de añadir medio a la lista
   const handleAddToList = () => {
-    console.log('handleAddToList');
-    console.log({
-      id: media.id,
-      mediaType: media.mediaType,
-      title: media.title || media.name,
-      posterPath: media.posterPath,
-      releaseDate: media.releaseDate || media.startDate,
-      overview: media.overview,
-      seen: false,
-    });
     addMedia({
       id: media.id,
       mediaType: media.mediaType,
@@ -34,14 +23,11 @@ const MediaCard = ({
     });
   };
 
-  // Lógica de eliminar medio de la lista
   const handleRemoveFromList = () => {
     removeMedia(media.id);
   };
 
-  // Lógica de cambio de estado de visto/no visto
   const handleSeenStatusChange = async (event) => {
-    console.log('handleSeenStatusChange');
     const newSeenStatus = event.target.value === 'true';
     try {
       await updateSeenStatus(media.id, newSeenStatus);
@@ -51,9 +37,6 @@ const MediaCard = ({
     }
   };
 
-
-
-  // Renderizado de botones para agregar/eliminar del listado y cambiar el estado de visto
   const renderButtons = () => (
     <div className="mediaButtons">
       {media.onList ? (
@@ -75,36 +58,36 @@ const MediaCard = ({
             <option value="false">Not Seen</option>
             <option value="true">Seen</option>
           </select>
-
         </div>
       )}
     </div>
   );
 
-  // Renderizado de contenido del medio (película o serie)
   const renderMediaContent = () => {
-    if (media.mediaType === 'MOVIE') {
-      return (
-        <>
-          <h3>{media.title}</h3>
+    const icon =
+      media.mediaType === 'MOVIE' ? (
+        <FaFilm className="mediaIcon" />
+      ) : media.mediaType === 'SERIE' ? (
+        <FaTv className="mediaIcon" />
+      ) : null;
+
+    return (
+      <>
+        <h3>
+          {icon}
+          {media.title}
+        </h3>
+        {media.mediaType === 'MOVIE' ? (
           <p>{media.releaseDate || 'Date not available'}</p>
-          <p>{media.overview || 'Description not available'}</p>
-        </>
-      );
-    } else if (media.mediaType === 'SERIE') {
-      return (
-        <>
-          <h3>{media.title}</h3>
+        ) : (
           <p>
             {media.startDate || 'Start date not available'} -{' '}
             {media.endDate || 'End date not available'}
           </p>
-          <p>{media.overview || 'Description not available'}</p>
-        </>
-      );
-    }
-
-    return <div>Error: Media type not valid ({media.mediaType})</div>;
+        )}
+        <p>{media.overview || 'Description not available'}</p>
+      </>
+    );
   };
 
   return (
@@ -112,19 +95,15 @@ const MediaCard = ({
       <img src={media.posterPath} alt={media.title} />
       <div className="mediacard-right">
         <div>{renderMediaContent()}</div>
-        <div className="options">
-          {renderButtons()}
-        </div>
-        {media.addedAt && <div className="addedAt">
-          Added At: {media.addedAt}
-        </div>}
+        <div className="options">{renderButtons()}</div>
+        {media.addedAt && (
+          <div className="addedAt">Added At: {media.addedAt}</div>
+        )}
       </div>
     </div>
   );
-
 };
 
-// PropTypes para validación
 MediaCard.propTypes = {
   media: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,

@@ -15,6 +15,8 @@ export default function useMediaList() {
         const token = Cookies.get('token');
         /// Prevents unnecessary fetching
         console.log(`media list len > 0?: ${mediaList.length}`);
+        console.log(`TOKEN? ${!!token}`);
+        console.log(token);
         if (mediaList.length > 0) {
             console.log('Medialist fetch is not necessary');
             return;
@@ -142,7 +144,7 @@ export default function useMediaList() {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Failed to update seen status');
             }
-
+            console.log(`Seens ${seenStatus} updated successfully for ${mediaId}`); 
             // Update local state My List 
             setMediaList((prevList) =>
                 prevList.map((media) =>

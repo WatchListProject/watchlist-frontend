@@ -38,12 +38,6 @@ const Navbar = () => {
                     <li>
                         <Link to="/AI-Recomendations" onClick={toggleMenu}>AI Recomendations</Link>
                     </li>
-                    <li>
-                        <Link to="/about" onClick={toggleMenu}>About</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact" onClick={toggleMenu}>Contact</Link>
-                    </li>
                     {isLoggedIn ?
                         <li>
                             <Link to="/" className="login-button" onClick={handleLogout}>Logout</Link>

@@ -1,0 +1,96 @@
+.homePage {
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  background-color: #121212;
+  text-align: center;
+}
+
+.homeHeader {
+  margin-bottom: 2rem;
+}
+
+.homeHeader h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.homeHeader p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.homeSection {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Aumenta el espacio entre las secciones */
+}
+
+.homeFeature {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+  margin-bottom: 2rem; /* Margen adicional entre cada característica */
+}
+
+.featureImage {
+  width: 550px; /* Aumenta el ancho de la imagen */
+  max-width: 100%; /* Asegura que no se desborden en dispositivos pequeños */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.2); /* Marco sutil con transparencia */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto de animación */
+}
+
+/* Efecto de zoom al pasar el ratón */
+.featureImage:hover {
+  transform: scale(1.02); /* Aumenta ligeramente el tamaño de la imagen */
+}
+
+.homeFeature div {
+  max-width: 600px;
+}
+
+.homeFeature:nth-child(2) {
+  flex-direction: row-reverse;
+}
+
+.homeFeature h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #f0db4f; /* El color amarillo de los títulos */
+}
+
+.homeFeature p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Estilo para el enlace */
+.featureLink {
+  display: inline-block;
+  background-color: transparent; /* Fondo transparente */
+  color: #f0db4f; /* El mismo color amarillo */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.featureLink:hover {
+  color: #e0c23bd7; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+  .homeFeature {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .featureImage {
+    width: 100%;
+    max-width: 500px;
+  }
+}
