@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./RecommendationsPage.css";
 import Cookies from "js-cookie";
 
+const VITE_WATCHLIST_API_URL = import.meta.env.VITE_WATCHLIST_API_URL;
 const RecommendationsPage = () => {
     const [recommendations, setRecommendations] = useState("");
     const [loading, setLoading] = useState(false);
@@ -13,7 +14,7 @@ const RecommendationsPage = () => {
         setRecommendations(""); // Limpia recomendaciones anteriores
         try {
             const token = Cookies.get("token");
-            const response = await fetch("http://localhost:3001/user_media/recomendations", {
+            const response = await fetch(`${VITE_WATCHLIST_API_URL}/user_media/recomendations`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

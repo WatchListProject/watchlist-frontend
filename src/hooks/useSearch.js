@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { SearchResultsContext } from "../context/SearchResults";
 
+const VITE_WATCHLIST_API_URL = import.meta.env.VITE_WATCHLIST_API_URL;
 export default function useSearch() {
     const [title, setTitle] = useState(''); // Inicializar con una cadena vacía
     const { searchResults, setSearchResults } = useContext(SearchResultsContext);
@@ -13,7 +14,7 @@ export default function useSearch() {
         setError(null);
 
         try {
-            const url = `http://localhost:3001/${type.toLowerCase() === 'movie' ? 'search_movie' : 'search_serie'}?name=${name}`;
+            const url = `${VITE_WATCHLIST_API_URL}/${type.toLowerCase() === 'movie' ? 'search_movie' : 'search_serie'}?name=${name}`;
             console.log(url);
             const response = await fetch(url);
 

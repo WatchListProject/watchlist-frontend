@@ -4,6 +4,7 @@ import { MediaListContext } from "../context/MediaList";
 import Cookies from 'js-cookie';
 import useSearch from "./useSearch";
 
+const VITE_WATCHLIST_API_URL = import.meta.env.VITE_WATCHLIST_API_URL;
 export default function useMediaList() {
     const { mediaList, setMediaList } = useContext(MediaListContext);
     const [error, setError] = useState(null);
@@ -24,7 +25,7 @@ export default function useMediaList() {
         try {
             console.log('Fetching media list');
             setLoading(true);
-            const response = await fetch('http://localhost:3001/user_media', {
+            const response = await fetch(`${VITE_WATCHLIST_API_URL}/user_media`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -36,7 +37,7 @@ export default function useMediaList() {
             }
 
             const data = await response.json();
-            console.log('fetching http://localhost:3001/user_media');
+            console.log('fetching /user_media');
             setMediaList(data);
         } catch (err) {
             setError(err.message);
@@ -53,7 +54,7 @@ export default function useMediaList() {
         const token = Cookies.get('token');
         try {
             // Add media request
-            const response = await fetch('http://localhost:3001/user_media', {
+            const response = await fetch(`${VITE_WATCHLIST_API_URL}/user_media`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +94,7 @@ export default function useMediaList() {
         console.log(mediaId);
         try {
             // Remove media request
-            const response = await fetch(`http://localhost:3001/user_media`, {
+            const response = await fetch(`${VITE_WATCHLIST_API_URL}/user_media`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ export default function useMediaList() {
         console.log(seenStatus);
         try {
             // Update status request
-            const response = await fetch('http://localhost:3001/user_media', {
+            const response = await fetch(`${VITE_WATCHLIST_API_URL}/user_media`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

@@ -6,6 +6,7 @@ import useMediaList from "./useMediaList";
 import useSearch from "./useSearch";
 import { signInWithGoogle } from "../auth/firebaseAuth";
 
+const VITE_WATCHLIST_API_URL = import.meta.env.VITE_WATCHLIST_API_URL;
 export default function useLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -25,7 +26,7 @@ export default function useLogin() {
         setLoading(true);
 
         try {
-            const response = await fetch("http://localhost:3001/login", {
+            const response = await fetch(`${VITE_WATCHLIST_API_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
