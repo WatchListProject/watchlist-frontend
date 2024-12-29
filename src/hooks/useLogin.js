@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Cookies from 'js-cookie';
-import { UserContext } from "../context/user";
+import { UserContext } from "../context/User"; // Corrected the case
 import { jwtDecode } from "jwt-decode";
 import useMediaList from "./useMediaList";
 import useSearch from "./useSearch";

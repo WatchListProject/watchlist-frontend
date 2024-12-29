@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import MediaCard from '../components/MediaCard';
 import useMediaList from '../hooks/useMediaList';
 import useSearch from '../hooks/useSearch';
-import './SearchPage.css';
+import './Searchpage.css'; // Corrected the case
 
 const SearchPage = () => {
   const {

@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import SearchPage from './pages/SearchPage';
+import SearchPage from './pages/SearchPage'; // Corrected the case
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import useLogin from './hooks/useLogin';

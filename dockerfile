@@ -1,29 +1,18 @@
-# Etapa de construcción
-FROM node:16 AS build
+# Usa una imagen base de Node.js
+FROM node:18-alpine
 
+# Establece el directorio de trabajo
 WORKDIR /app
 
-COPY package*.json ./
-
+# Copia el package.json e instala dependencias
+COPY package.json package-lock.json ./
 RUN npm install
 
+# Copia los archivos del proyecto al contenedor
 COPY . .
 
-RUN npm run build
+# Expon el puerto
+EXPOSE 8080
 
-# Etapa de producción
-FROM node:16
-
-WORKDIR /app
-
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/server.js .
-
-# Instalar express
-RUN npm install express
-
-# Exponer el puerto que usará el servidor
-EXPOSE 3000
-
-# Comando para iniciar el servidor
+# Comando para ejecutar el servidor
 CMD ["node", "server.js"]

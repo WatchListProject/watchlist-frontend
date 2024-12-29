@@ -1,0 +1,28 @@
+# Ignorar la carpeta de node_modules (instalada dentro del contenedor)
+node_modules
+
+# Ignorar la carpeta de build/dist (resultado de la compilación)
+dist
+build
+
+# Ignorar archivos temporales o de caché
+.npm
+.vite
+*.log
+*.swp
+
+# Ignorar archivos de configuración locales
+*.env
+*.local
+
+# Ignorar directorios o archivos de Git
+.git
+.gitignore
+
+# Ignorar la carpeta de pruebas o archivos de test (si no son necesarios en producción)
+tests
+test
+
+# Ignorar archivos generados por el editor (como de VSCode, JetBrains, etc.)
+.vscode
+.idea

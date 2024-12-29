@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
-import { UserProvider } from './context/user.jsx'
-import { MediaListProvider } from './context/MediaList.jsx'
+import App from './App'
+import { UserProvider } from './context/User'; // Corrected the case
+import { MediaListProvider } from './context/MediaList'
 import { StrictMode } from 'react'
-import { SearchResultsProvider } from './context/SearchResults.jsx'
+import { SearchResultsProvider } from './context/SearchResults'
 
 createRoot(document.getElementById('root')).render(
 
