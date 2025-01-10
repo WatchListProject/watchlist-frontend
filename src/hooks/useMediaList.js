@@ -16,14 +16,11 @@ export default function useMediaList() {
         const token = Cookies.get('token');
         /// Prevents unnecessary fetching
         console.log(`media list len > 0?: ${mediaList.length}`);
-        console.log(`TOKEN? ${!!token}`);
-        console.log(token);
+
         if (mediaList.length > 0) {
-            console.log('Medialist fetch is not necessary');
             return;
         }
         try {
-            console.log('Fetching media list');
             setLoading(true);
             const response = await fetch(`${VITE_WATCHLIST_API_URL}/user_media`, {
                 method: 'GET',
@@ -35,9 +32,9 @@ export default function useMediaList() {
             if (!response.ok) {
                 throw new Error('Failed to fetch media list');
             }
-
+                
             const data = await response.json();
-            console.log('fetching /user_media');
+            console.log('Received media list:', data);
             setMediaList(data);
         } catch (err) {
             setError(err.message);

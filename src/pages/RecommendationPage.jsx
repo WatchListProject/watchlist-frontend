@@ -11,7 +11,7 @@ const RecommendationsPage = () => {
     const fetchRecommendations = async () => {
         setLoading(true);
         setError(null);
-        setRecommendations(""); // Limpia recomendaciones anteriores
+        setRecommendations("");
         try {
             const token = Cookies.get("token");
             const response = await fetch(`${VITE_WATCHLIST_API_URL}/user_media/recomendations`, {
@@ -29,7 +29,6 @@ const RecommendationsPage = () => {
             const data = await response.json();
             console.log("Received recommendations:", data);
 
-            // Si el endpoint retorna un string, lo guardamos directamente
             setRecommendations(data.recommendation.split('%') || "No recommendations available.");
         } catch (err) {
             setError(err.message);

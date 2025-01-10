@@ -29,7 +29,7 @@ export const LoginPage = () => {
               required
             />
           </div>
-          {error && <p className="error-message">{error}</p>} {/* Muestra errores */}
+          {error && <p className="error-message">{error}</p>}
           <button type="submit" className="login-button" disabled={loading}>
             {loading ? "Signing in..." : "Sign In"}
           </button>

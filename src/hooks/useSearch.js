@@ -3,7 +3,7 @@ import { SearchResultsContext } from "../context/SearchResults";
 
 const VITE_WATCHLIST_API_URL = import.meta.env.VITE_WATCHLIST_API_URL;
 export default function useSearch() {
-    const [title, setTitle] = useState(''); // Inicializar con una cadena vacía
+    const [title, setTitle] = useState(''); 
     const { searchResults, setSearchResults } = useContext(SearchResultsContext);
     const [error, setError] = useState(null);
     const [mediaType, setMediaType] = useState('MOVIE');
@@ -39,7 +39,7 @@ export default function useSearch() {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Evitar el re-renderizado del formulario
+        event.preventDefault();
         if (!title.trim()) {
             setError('Please enter a valid title.');
             return;

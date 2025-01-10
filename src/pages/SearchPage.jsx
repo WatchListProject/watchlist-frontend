@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import MediaCard from '../components/MediaCard';
 import useMediaList from '../hooks/useMediaList';
 import useSearch from '../hooks/useSearch';
-import './Searchpage.css'; // Corrected the case
+import './Searchpage.css'; 
 
 const SearchPage = () => {
   const {
@@ -29,7 +29,6 @@ const SearchPage = () => {
   
   console.log("rendering search page");
 
-  // Clase condicional para centrar el contenido si no hay resultados
   const pageClass = searchResults && searchResults.length > 0 ? 'search-page-with-results' : '';
 
   return (

@@ -21,16 +21,16 @@ const HomePage = () => {
         </div>
 
         <div className="homeFeature">
-          <img src="images\search-media.png" alt="Add to List" className="featureImage" />
+          <img src="images\add-to-list.png" alt="Add to List" className="featureImage" />
           <div>
             <h2>Organize Your Media</h2>
             <p>Create a personalized list of movies and series. Keep track of what you’ve watched and what’s next on your list!</p>
-            <Link to="/search" className="featureLink">Go to Your List</Link>
+            <Link to="/my-list" className="featureLink">Go to Your List</Link>
           </div>
         </div>
 
         <div className="homeFeature">
-          <img src="images\search-media.png" alt="AI Recommendations" className="featureImage" />
+          <img src="images\ai-recommendations.png" alt="AI Recommendations" className="featureImage" />
           <div>
             <h2>Get AI Recommendations</h2>
             <p>Leverage the power of AI to receive personalized movie and series recommendations based on your watchlist.</p>

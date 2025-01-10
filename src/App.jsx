@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import SearchPage from './pages/SearchPage'; // Corrected the case
+import SearchPage from './pages/SearchPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import useLogin from './hooks/useLogin';
@@ -13,13 +13,13 @@ function App() {
     const { checkIsLoggedIn } = useLogin();
 
     useEffect(() => {
-        checkIsLoggedIn(); // Verifica inicialmente al cargar la aplicación
+        checkIsLoggedIn();
 
         const interval = setInterval(() => {
-            checkIsLoggedIn(); // Verifica periódicamente
-        }, 60000); // Cada 60 segundos
+            checkIsLoggedIn(); 
+        }, 60000); 
 
-        return () => clearInterval(interval); // Limpia el intervalo al desmontar el componente
+        return () => clearInterval(interval); 
     }, []);
     return (
         <>

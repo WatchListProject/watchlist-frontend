@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Cookies from 'js-cookie';
-import { UserContext } from "../context/User"; // Corrected the case
+import { UserContext } from "../context/User";
 import { jwtDecode } from "jwt-decode";
 import useMediaList from "./useMediaList";
 import useSearch from "./useSearch";
@@ -16,8 +16,6 @@ export default function useLogin() {
     const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
     const { setMediaList } = useMediaList();
     const { setSearchResults } = useSearch();
-    /// TO-DO: Redirect to home or my list if the user is already logged in 
-
 
 
     const handleLogin = async (e) => {
@@ -40,7 +38,6 @@ export default function useLogin() {
 
                 Cookies.set('token',
                     data.token
-                    //'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkhlbGxvQGdtYWlsLmNvbSIsInVzZXJJZCI6IjY2YjY5ZWU0MmRkOTg5MGY3YzAzYjZmOSIsImF1ZCI6IldhdGNobGlzdCIsImlhdCI6MTczMzUwMDkxMSwiZXhwIjoxNzMzNTA0NTExfQ.yOqtC3DQzeXVBWtUAFbFwsG7Ce-6EnhPn8lP9sLau6o'
                     , {
                         secure: true, 
                         sameSite: 'strict', 
@@ -52,18 +49,14 @@ export default function useLogin() {
 
                 alert("Login successful!");
 
-                // Redirige o realiza alguna acción
             } else {
-                // Muestra el mensaje de error desde el servidor
-
                 setError(data.statusCode === 401 ? "Incorrect credentials" : (data.statusCode === 404 ? "User not found" : "Login failed. Please try again."));
             }
         } catch (err) {
-            // Error de red u otros problemas
             console.error(err);
             setError("An error occurred. Please try again later.");
         } finally {
-            setLoading(false); // Oculta estado de carga
+            setLoading(false); 
         }
     };
 
@@ -107,26 +100,22 @@ export default function useLogin() {
         }
 
         try {
-            // Usar jwt-decode para decodificar el token
             const payload = jwtDecode(token);
 
-            // Verificar si el token ha expirado
             const isExpired = payload.exp * 1000 < Date.now();
             if (isExpired) {
-                Cookies.remove('token'); // Eliminar la cookie si ha expirado
+                Cookies.remove('token'); 
                 setIsLoggedIn(false);
                 setMediaList([]);
                 setSearchResults(null);
-                console.log(`JWT EXPIRED: ${JSON.stringify(payload)}`);
                 return false;
             }
-            console.log(`JWT STILL VALID: ${JSON.stringify(payload)}`);
 
-            setIsLoggedIn(true); // El token es válido
+            setIsLoggedIn(true); 
             return true;
         } catch (err) {
             console.error('Error al decodificar el token:', err);
-            setIsLoggedIn(false); // Cualquier error invalida el estado de autenticación
+            setIsLoggedIn(false); 
             return false;
         }
     };

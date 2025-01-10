@@ -2,7 +2,6 @@
 import { createContext, useState } from 'react';
 export const SearchResultsContext = createContext();
 
-// Proveedor del contexto
 export const SearchResultsProvider = ({ children }) => {
     const [searchResults, setSearchResults] = useState(null);
 

@@ -20,12 +20,12 @@ const signInWithGoogle = () => {
   return signInWithPopup(auth, provider)
     .then(async (result) => {
       const user = result.user;
-      const idToken = await user.getIdToken();  // Espera correctamente
-      return { userInfo: user, idToken };  // Devuelve un objeto con la información del usuario
+      const idToken = await user.getIdToken();  
+      return { userInfo: user, idToken };  
     })
     .catch((error) => {
       console.error("Error al iniciar sesión con Google:", error);
-      throw error;  // Lanza el error para que pueda manejarse en la llamada
+      throw error; 
     });
 };
 

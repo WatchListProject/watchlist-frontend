@@ -3,7 +3,9 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
+# Copiar el package.json y el archivo .env
 COPY package*.json ./
+COPY .env ./
 
 RUN npm install
 
@@ -16,8 +18,12 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Copiar los archivos generados en la etapa de construcción
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/server.mjs .
+
+# Copiar el archivo .env a la imagen de producción
+COPY .env ./
 
 # Instalar express
 RUN npm install express
