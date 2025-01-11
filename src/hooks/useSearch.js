@@ -38,7 +38,7 @@ export default function useSearch() {
         }
     };
 
-    const handleSubmit = (event) => {
+    const handleSearch = (event) => {
         event.preventDefault();
         if (!title.trim()) {
             setError('Please enter a valid title.');
@@ -53,5 +53,5 @@ export default function useSearch() {
         }
     }, [mediaType]);
 
-    return { title, setTitle, mediaType, setMediaType, isLoading, handleSubmit, searchResults, setSearchResults, error };
+    return { title, setTitle, mediaType, setMediaType, isLoading, handleSearch, searchResults, setSearchResults, error };
 }

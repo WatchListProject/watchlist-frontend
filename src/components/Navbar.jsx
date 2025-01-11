@@ -40,14 +40,12 @@ const Navbar = () => {
                     </li>
                     {isLoggedIn ?
                         <li>
-                            <Link to="/" className="login-button" onClick={handleLogout}>Logout</Link>
+                            <Link className="login-button" onClick={handleLogout}>Logout</Link>
                         </li> :
                         <li>
-                            <Link to="/" className="login-button" onClick={handleLoginWithGoogle}>Sign in with Google</Link>
+                            <Link className="login-button" onClick={handleLoginWithGoogle}>Sign in with Google</Link>
                         </li>
-
                     }
-
                 </ul>
             </div>
         </nav>

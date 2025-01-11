@@ -1,22 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import MediaCard from '../components/MediaCard';
 import useMediaList from '../hooks/useMediaList';
 import useSearch from '../hooks/useSearch';
-import './Searchpage.css'; 
+import './Searchpage.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import useLogin from '../hooks/useLogin';
 
 const SearchPage = () => {
+
+  const { mediaType: urlMediaType, query: urlQuery } = useParams();
+  const navigate = useNavigate();
+
+  /// Custom Hooks
   const {
     title,
     setTitle,
     mediaType,
     setMediaType,
     isLoading,
-    handleSubmit,
+    handleSearch,
     searchResults,
     setSearchResults,
     error,
   } = useSearch();
   const { findMedia, fetchMediaList } = useMediaList();
+  const { isLoggedIn } = useLogin
+
+
+  /// Effects
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchMediaList();
+    }
+
+  }, [isLoggedIn]);
 
   useEffect(() => {
     fetchMediaList();
@@ -26,13 +43,29 @@ const SearchPage = () => {
     };
   }, []);
 
+  /// Set states by params only on first render
+  const [firstRender, setFirstRender] = useState(true);
+  if (firstRender &&urlMediaType && urlQuery && title !== urlQuery) {
+    setTitle(urlQuery);
+    setMediaType(urlMediaType);
+    setFirstRender(false);
+    handleSearch({ preventDefault: () => { } });
+  }
   
-  console.log("rendering search page");
 
-  const pageClass = searchResults && searchResults.length > 0 ? 'search-page-with-results' : '';
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (title.trim()) {
+      navigate(`/search/${mediaType}/${title}`);
+    }
+    handleSearch({ preventDefault: () => { } });
+  };
+
+
 
   return (
-    <div className={`search-page-container ${pageClass}`}>
+    <div className={`search-page-container`}>
       <h1>Search Media</h1>
       <form className="search-form-container" onSubmit={handleSubmit}>
         <div className="search-form">

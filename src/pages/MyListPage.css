@@ -1,0 +1,43 @@
+.filters {
+  display: flex; 
+  gap: 1rem; 
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.filters select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+
+.login-button {
+  color: #1e1e1e; /* Texto oscuro */
+  background-color: #f0db4f; /* Fondo amarillo */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #e8ba00; /* Amarillo más oscuro */
+  color: #000000 !important; /* Texto negro al pasar el mouse */
+}
+
+
+@media (max-width: 768px) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0.5rem; 
+  }
+
+  .filters select {
+    width: 100%; 
+  }
+}

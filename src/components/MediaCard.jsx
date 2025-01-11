@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import './MediaCard.css';
 import useMediaList from '../hooks/useMediaList';
 import { FaFilm, FaTv } from 'react-icons/fa';
+import useLogin from '../hooks/useLogin';
 
 const MediaCard = ({
   media = {
@@ -10,7 +11,7 @@ const MediaCard = ({
   },
 }) => {
   const { addMedia, removeMedia, updateSeenStatus } = useMediaList();
-
+  const { isLoggedIn, handleLoginWithGoogle } = useLogin();
 
   const handleAddToList = () => {
     const formatDate = (date) => {
@@ -58,31 +59,39 @@ const MediaCard = ({
     return datePart;
   };
 
-  const renderButtons = () => (
-    <div className="mediaButtons">
-      {media.onList ? (
-        <button className="removeButton" onClick={handleRemoveFromList}>
-          Remove from My List
-        </button>
-      ) : (
-        <button className="addButton" onClick={handleAddToList}>
-          Add to My List
-        </button>
-      )}
-      {media.onList && (
-        <div className="seenSelector">
-          <select
-            id={`seen-${media.id}`}
-            value={media.seen ? 'true' : 'false'}
-            onChange={handleSeenStatusChange}
-          >
-            <option value="false">Not Seen</option>
-            <option value="true">Seen</option>
-          </select>
+  const renderButtons = () => {
+    return (
+      isLoggedIn ?
+        <div className="mediaButtons">
+          {media.onList ? (
+            <button className="removeButton" onClick={handleRemoveFromList}>
+              Remove from My List
+            </button>
+          ) : (
+            <button className="addButton" onClick={handleAddToList}>
+              Add to My List
+            </button>
+          )}
+          {media.onList && (
+            <div className="seenSelector">
+              <select
+                id={`seen-${media.id}`}
+                value={media.seen ? 'true' : 'false'}
+                onChange={handleSeenStatusChange}
+              >
+                <option value="false">Not Seen</option>
+                <option value="true">Seen</option>
+              </select>
+            </div>
+          )}
         </div>
-      )}
-    </div>
-  );
+        :
+        <button className="addButton" onClick={handleLoginWithGoogle}>
+          Sign in and add to My List
+        </button>
+    );
+  }
+
 
   const renderMediaContent = () => {
     const icon =

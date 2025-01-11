@@ -16,10 +16,10 @@ function App() {
         checkIsLoggedIn();
 
         const interval = setInterval(() => {
-            checkIsLoggedIn(); 
-        }, 60000); 
+            checkIsLoggedIn();
+        }, 60000);
 
-        return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, []);
     return (
         <>
@@ -29,9 +29,12 @@ function App() {
                     <Routes>
                         <Route path="/my-list" element={<MyList />} />
                         <Route path="/" element={<HomePage />} />
+
                         <Route path="/search" element={<SearchPage />} />
+                        <Route path="/search/:mediaType/:query" element={<SearchPage />} />
+                        
                         <Route path="/login" element={<LoginPage />} />
-                        <Route path="AI-Recomendations" element={<RecommendationsPage/>} />
+                        <Route path="AI-Recomendations" element={<RecommendationsPage />} />
                     </Routes>
                 </main>
             </Router>
