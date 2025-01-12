@@ -14,7 +14,7 @@ export default function useLogin() {
     const [loading, setLoading] = useState(false);
 
     const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
-    const { setMediaList } = useMediaList();
+    const { setMediaList, fetchMediaList } = useMediaList();
     const { setSearchResults } = useSearch();
 
 
@@ -39,8 +39,8 @@ export default function useLogin() {
                 Cookies.set('token',
                     data.token
                     , {
-                        secure: true, 
-                        sameSite: 'strict', 
+                        secure: true,
+                        sameSite: 'strict',
                         expires: 1, /// TO-DO: SET the expiration to the token exp
                     });
                 setIsLoggedIn(true);
@@ -56,7 +56,7 @@ export default function useLogin() {
             console.error(err);
             setError("An error occurred. Please try again later.");
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
@@ -69,12 +69,12 @@ export default function useLogin() {
             Cookies.set('token',
                 userCredential.idToken
                 , {
-                    secure: true, 
-                    sameSite: 'strict', 
+                    secure: true,
+                    sameSite: 'strict',
                     expires: 1,  /// TO-DO: SET the expiration to the token exp
                 });
             setIsLoggedIn(true);
-
+            fetchMediaList();
             console.log('Token guardado en cookie:', userCredential.idToken);
 
         } catch (error) {
@@ -86,7 +86,6 @@ export default function useLogin() {
         Cookies.remove('token');
         setIsLoggedIn(false);
         setMediaList([]);
-        setSearchResults([]);
         console.log('Sesión cerrada, token eliminado.');
     };
 
@@ -104,22 +103,21 @@ export default function useLogin() {
 
             const isExpired = payload.exp * 1000 < Date.now();
             if (isExpired) {
-                Cookies.remove('token'); 
+                Cookies.remove('token');
                 setIsLoggedIn(false);
                 setMediaList([]);
                 setSearchResults(null);
                 return false;
             }
 
-            setIsLoggedIn(true); 
+            setIsLoggedIn(true);
             return true;
         } catch (err) {
             console.error('Error al decodificar el token:', err);
-            setIsLoggedIn(false); 
+            setIsLoggedIn(false);
             return false;
         }
     };
-
 
 
     return { isLoggedIn, checkIsLoggedIn, handleLogin, handleLoginWithGoogle, handleLogout, setEmail, setPassword, error, loading };

@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
-import { parse } from 'date-fns';
+import { useEffect } from 'react';
 import MediaCard from '../components/MediaCard';
 import useMediaList from '../hooks/useMediaList';
 import './MyListPage.css';
 import useLogin from '../hooks/useLogin';
 import { Link } from 'react-router-dom';
+import useFilters from '../hooks/useFilters';
+
 
 const MyList = () => {
   const { mediaList, fetchMediaList, loading, error } = useMediaList();
@@ -13,13 +14,11 @@ const MyList = () => {
   console.log(isLoggedIn);
 
   /// filters
-  const [mediaType, setMediaType] = useState('All');
-  const [seenStatus, setSeenStatus] = useState('All');
-  const [orderBy, setOrderBy] = useState('addedAt');
-  const [ascendent, setAscendent] = useState(false);
+  const { mediaType, setMediaType, seenStatus, setSeenStatus, orderBy, setOrderBy, ascendent, setAscendent, filterMedia } = useFilters();
 
   useEffect(() => {
     if (isLoggedIn) {
+      console.log("fetching media list");
       fetchMediaList();
     }
 
@@ -28,42 +27,10 @@ const MyList = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  const parseDate = (dateString) => {
-    if (!dateString) return new Date(9999, 11, 31);
-    return parse(dateString, 'dd/MM/yyyy HH:mm', new Date());
-  };
-
-  const filterMedia = (list, { orderBy = 'addedAt', ascendent, seenStatus, mediaType }) => {
-    const filteredList = list.filter((media) => {
-      if (media.mediaType !== mediaType && mediaType !== 'All') {
-        return false;
-      }
-
-      if (seenStatus === 'Not Seen') {
-        return media.seen === false;
-      }
-      if (seenStatus === 'Seen') {
-        return media.seen === true;
-      }
-      return true;
-    });
-
-    const orderedList = filteredList
-      .slice()
-      .sort((a, b) => {
-        const dateA = a[orderBy] ? parseDate(a[orderBy]) : parseDate(a.startDate);
-        const dateB = b[orderBy] ? parseDate(b[orderBy]) : parseDate(b.startDate);
-
-        return ascendent ? dateA - dateB : dateB - dateA;
-      });
-
-    return orderedList;
-  };
 
   const renderMediaList = () => {
     return (
       <div className="myList">
-
         <h1>My List</h1>
 
         <div className="filters">

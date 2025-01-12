@@ -29,7 +29,9 @@ const SearchPage = () => {
 
   /// Effects
   useEffect(() => {
+    console.log('SEARCH PAGE useEffect isLoggedIn');
     if (isLoggedIn) {
+      console.log("fetching media list");
       fetchMediaList();
     }
 
