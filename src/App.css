@@ -1,4 +1,3 @@
-/* Estilo general */
 body {
   margin: 0;
   font-family: 'Roboto', Arial, sans-serif;
@@ -9,7 +8,6 @@ body {
   flex-direction: column;
 }
 
-/* Centrar solo el contenido del main */
 main {
   flex: 1;
   display: flex;
@@ -27,7 +25,6 @@ main h1 {
   text-align: center;
 }
 
-/* Formularios */
 .form {
   display: flex;
   gap: 0.3rem;
@@ -50,7 +47,6 @@ input:hover, select:hover {
   background: #333;
 }
 
-/* Botón */
 button {
   cursor: pointer;
   background: #f0db4f;
@@ -64,7 +60,6 @@ button:hover {
   background: #e8ba00;
 }
 
-/* Mensajes */
 .loading {
   color: #007bff;
   font-style: italic;
@@ -75,7 +70,7 @@ button:hover {
   font-weight: bold;
 }
 
-/* Responsividad */
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;

@@ -11,10 +11,9 @@
   font-size: 1rem;
 }
 
-
 .login-button {
-  color: #1e1e1e; /* Texto oscuro */
-  background-color: #f0db4f; /* Fondo amarillo */
+  color: #1e1e1e; 
+  background-color: #f0db4f; 
   padding: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: bold;
@@ -25,8 +24,8 @@
 }
 
 .login-button:hover {
-  background-color: #e8ba00; /* Amarillo más oscuro */
-  color: #000000 !important; /* Texto negro al pasar el mouse */
+  background-color: #e8ba00; 
+  color: #000000 !important; 
 }
 
 

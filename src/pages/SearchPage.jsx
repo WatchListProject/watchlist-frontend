@@ -47,13 +47,13 @@ const SearchPage = () => {
 
   /// Set states by params only on first render
   const [firstRender, setFirstRender] = useState(true);
-  if (firstRender &&urlMediaType && urlQuery && title !== urlQuery) {
+  if (firstRender && urlMediaType && urlQuery && title !== urlQuery) {
     setTitle(urlQuery);
     setMediaType(urlMediaType);
     setFirstRender(false);
     handleSearch({ preventDefault: () => { } });
   }
-  
+
 
 
   const handleSubmit = (event) => {

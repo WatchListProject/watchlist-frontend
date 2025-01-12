@@ -44,15 +44,15 @@ button:disabled {
   padding: 15px;
   margin-bottom: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid transparent; /* Agrega un borde transparente por defecto */
+  border: 2px solid transparent;
   transition: all 0.3s ease-in-out;
 }
 
 .recommendationsResult li:hover {
-  background-color: #111; /* Fondo ligeramente más claro */
+  background-color: #111;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
-  border-color: #007bff; /* Color de borde en hover (puedes cambiarlo) */
+  border-color: #007bff;
 }
 
 .recommendationsResult li h3 {
@@ -64,6 +64,6 @@ button:disabled {
 
 .recommendationsResult li p {
   font-size: 1rem;
-  color: #bbb; /* Colores más suaves para texto en el tema oscuro */
+  color: #bbb;
   margin-top: 5px;
 }
