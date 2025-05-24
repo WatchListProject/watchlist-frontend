@@ -28,3 +28,5 @@ EXPOSE 8080
 
 # Comando para iniciar el servidor
 CMD ["node", "server.mjs"]
+
+### renamed to Dockerfile
