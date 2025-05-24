@@ -3,7 +3,7 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-# Copiar el package.json (ya no el .env)
+# Copiar el package.json
 COPY package*.json ./
 
 RUN npm install
@@ -17,12 +17,11 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copiar los archivos generados en la etapa de construcción
+# Copiar solo lo necesario desde la etapa de build
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/server.mjs .
-
-# Instalar express
-RUN npm install express
+COPY --from=build /app/package*.json ./
+COPY --from=build /app/node_modules ./node_modules
 
 # Exponer el puerto que usará el servidor
 EXPOSE 8080
