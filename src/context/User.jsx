@@ -9,7 +9,6 @@ export const UserContext = createContext();
 export function UserProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
         const token = Cookies.get('token');
-        console.log(`TOKEN? ${!!token}`);
         return !!token;
     });
 

@@ -44,9 +44,6 @@ export default function useLogin() {
                         expires: 1, /// TO-DO: SET the expiration to the token exp
                     });
                 setIsLoggedIn(true);
-
-                console.log('Token guardado en cookie:', data.token);
-
                 alert("Login successful!");
 
             } else {
@@ -64,8 +61,6 @@ export default function useLogin() {
         try {
             const userCredential = await signInWithGoogle()
 
-            console.log(userCredential);
-
             Cookies.set('token',
                 userCredential.idToken
                 , {
@@ -75,8 +70,6 @@ export default function useLogin() {
                 });
             setIsLoggedIn(true);
             fetchMediaList();
-            console.log('Token guardado en cookie:', userCredential.idToken);
-
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
         }

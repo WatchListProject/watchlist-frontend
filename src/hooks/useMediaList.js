@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { MediaListContext } from "../context/MediaList";
 import Cookies from 'js-cookie';
 import useSearch from "./useSearch";
@@ -32,7 +32,7 @@ export default function useMediaList() {
             if (!response.ok) {
                 throw new Error('Failed to fetch media list');
             }
-                
+
             const data = await response.json();
             console.log('Received media list:', data);
             setMediaList(data);
@@ -142,7 +142,7 @@ export default function useMediaList() {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Failed to update seen status');
             }
-            console.log(`Seens ${seenStatus} updated successfully for ${mediaId}`); 
+            console.log(`Seens ${seenStatus} updated successfully for ${mediaId}`);
             // Update local state My List 
             setMediaList((prevList) =>
                 prevList.map((media) =>
@@ -156,7 +156,7 @@ export default function useMediaList() {
         }
     };
 
-    
+
 
     return {
         mediaList,
